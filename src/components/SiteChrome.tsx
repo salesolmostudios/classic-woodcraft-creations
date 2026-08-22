@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { site } from "@/lib/site";
+import { logo } from "@/lib/photos";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -12,12 +13,15 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-4">
-        <Link to="/" className="leading-tight">
-          <span className="block font-display text-lg font-semibold text-primary">
-            Classic Finishes
-          </span>
-          <span className="block text-[0.65rem] uppercase tracking-[0.3em] text-muted-foreground">
-            Est. {site.established} · Bothell, WA
+        <Link to="/" className="flex items-center gap-3 leading-tight">
+          <img src={logo} alt="Classic Finishes Woodworking logo" className="h-11 w-11 object-contain" />
+          <span>
+            <span className="block font-display text-lg font-semibold text-primary">
+              Classic Finishes
+            </span>
+            <span className="block text-[0.65rem] uppercase tracking-[0.3em] text-muted-foreground">
+              Est. {site.established} · Bothell, WA
+            </span>
           </span>
         </Link>
         <nav className="flex flex-wrap items-center gap-4 text-sm">
