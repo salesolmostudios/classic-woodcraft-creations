@@ -34,5 +34,7 @@ export const photos: Photo[] = [
   { id: "finish", caption: "Finished room" },
 ];
 
-export const heroPhoto = photos[0];
+export const heroPhoto = photos[0]!;
 export const homePhotos = photos.slice(1, 7);
+export const shopPhoto = photos[7]!;
+export const trimPhoto = photos[3]!;
