@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BookingRouteImport } from './routes/booking'
 import { Route as StoryRouteImport } from './routes/story'
 import { Route as WorkRouteImport } from './routes/work'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BookingRoute = BookingRouteImport.update({
+  id: '/booking',
+  path: '/booking',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StoryRoute = StoryRouteImport.update({
@@ -31,30 +37,34 @@ const WorkRoute = WorkRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/booking': typeof BookingRoute
   '/story': typeof StoryRoute
   '/work': typeof WorkRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/booking': typeof BookingRoute
   '/story': typeof StoryRoute
   '/work': typeof WorkRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/booking': typeof BookingRoute
   '/story': typeof StoryRoute
   '/work': typeof WorkRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/story' | '/work'
+  fullPaths: '/' | '/booking' | '/story' | '/work'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/story' | '/work'
-  id: '__root__' | '/' | '/story' | '/work'
+  to: '/' | '/booking' | '/story' | '/work'
+  id: '__root__' | '/' | '/booking' | '/story' | '/work'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BookingRoute: typeof BookingRoute
   StoryRoute: typeof StoryRoute
   WorkRoute: typeof WorkRoute
 }
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/booking': {
+      id: '/booking'
+      path: '/booking'
+      fullPath: '/booking'
+      preLoaderRoute: typeof BookingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/story': {
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BookingRoute: BookingRoute,
   StoryRoute: StoryRoute,
   WorkRoute: WorkRoute,
 }

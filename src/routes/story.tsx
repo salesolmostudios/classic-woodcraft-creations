@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Header, Footer } from "@/components/SiteChrome";
 import { PhotoSlot } from "@/components/PhotoSlot";
-import { photos } from "@/lib/photos";
+import { shopPhoto, trimPhoto } from "@/lib/photos";
 import { site } from "@/lib/site";
 
 export const Route = createFileRoute("/story")({
@@ -72,8 +72,8 @@ function Story() {
             </p>
           </div>
           <div className="space-y-4">
-            <PhotoSlot photo={photos[7]} ratio="aspect-3/4" />
-            <PhotoSlot photo={photos[3]} />
+            <PhotoSlot photo={shopPhoto} ratio="aspect-3/4" />
+            <PhotoSlot photo={trimPhoto} />
           </div>
         </div>
       </main>
